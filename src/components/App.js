@@ -1,26 +1,27 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { Home, Login, Settings, Signup, UserProfile } from "../pages";
 import { Loader, Navbar } from "./";
-import { Navigate } from "react-router-dom";
 
-// function PrivateRoute({ children, ...rest }) {
-//   const auth = useAuth();
 
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => {
-//         if (auth.user) {
-//           return children;
-//         }
+function PrivateRoute({ children, ...rest }) {
+  const auth = useAuth();
 
-//         return <Navigate to="/login" />;
-//       }}
-//     />
-//   );
-// }
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (auth.user) {
+          return children;
+        }
+
+        return <Navigate to="/login" />;
+      }}
+    />
+  );
+}
 
 const Error = () => {
   return <h1>404</h1>;
@@ -43,15 +44,15 @@ function App() {
           <Route
             path="/settings"
             element={
-              // <PrivateRoute>
+              //  <PrivateRoute>
                 <Settings />
-              // </PrivateRoute>
+            //  </PrivateRoute>
             }
           />
 
           <Route path="/user/:userId" element={<UserProfile />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="*" element={<Error />} />
+          <Route  element={<Error />} />
         </Routes>
       </Router>
     </div>

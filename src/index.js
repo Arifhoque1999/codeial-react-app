@@ -17,3 +17,6 @@ root.render(
 );
 
 // "react-toast-notifications": "^2.5.1",
+//  "predeploy": "npm run build",
+//     "deploy": "gh-pages -d build",
+// "homepage": "https://Arifhoque1999.github.io/codeial-react-app",

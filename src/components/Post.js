@@ -37,8 +37,8 @@ const Post = ({ post }) => {
   };
 
   const handlePostLikeClick = async () => {
-    console.log("sssssssssssssssssss",post._id)
-    const response = await toggleLike(post._id,"Post");
+    console.log("sssssssssssssssssss", post._id);
+    const response = await toggleLike(post._id, "Post");
     if (response.success) {
       if (response.data.deleted) {
         toast("Like Remove SuccessFully", {
@@ -83,12 +83,12 @@ const Post = ({ post }) => {
 
         <div className={styles.postActions}>
           <div className={styles.postLike}>
-            <button onClick={handlePostLikeClick}>
+            <button className={styles.postLikebtn} onClick={handlePostLikeClick}>
               <img
                 src="https://cdn-icons-png.flaticon.com/512/3128/3128313.png"
                 alt="likes-icon"
               />
-              <ToastContainer/>
+              <ToastContainer />
             </button>
 
             <span>{post.likes.length}</span>
